@@ -11,13 +11,15 @@ import argparse
 
 parser = argparse.ArgumentParser(description = "This is a parser")
 parser.add_argument("liga", help = "Enter League here!")
+parser.add_argument("season", help = "Enter season here!")
 args = parser.parse_args()
 
 liga = args.liga
+season = args.season
 
 def get_goals():
     ##Import matches from OpenLigaDB
-    url = "https://www.openligadb.de/api/getmatchdata/{0}/2018".format(liga)
+    url = "https://www.openligadb.de/api/getmatchdata/{0}/{1}".format(liga, season)
     games = rs.get(url).content
 
     import json
